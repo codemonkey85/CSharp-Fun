@@ -16,7 +16,8 @@ namespace LinqFun
     {
         bool xml = true;
         const string FileName = @"People";
-        public BindingList<Person> People = new BindingList<Person>();
+        public List<Person> People = new List<Person>();
+        BindingSource bs = new BindingSource();
         private CurrencyManager currencyManager = null;
         public frmMain()
         {
@@ -45,7 +46,7 @@ namespace LinqFun
             {
                 // XML Serialization
                 Stream TestFileStream = File.Create(filename);
-                XmlSerializer serializer = new XmlSerializer(typeof(BindingList<Person>));
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Person>));
                 serializer.Serialize(TestFileStream, People);
                 TestFileStream.Close();
             }
@@ -66,8 +67,8 @@ namespace LinqFun
                 if (File.Exists(filename))
                 {
                     Stream TestFileStream = File.OpenRead(filename);
-                    XmlSerializer deserializer = new XmlSerializer(typeof(BindingList<Person>));
-                    People = (BindingList<Person>)deserializer.Deserialize(TestFileStream);
+                    XmlSerializer deserializer = new XmlSerializer(typeof(List<Person>));
+                    People = (List<Person>)deserializer.Deserialize(TestFileStream);
                     TestFileStream.Close();
                 }
             }
@@ -78,7 +79,7 @@ namespace LinqFun
                 {
                     Stream TestFileStream = File.OpenRead(filename);
                     BinaryFormatter deserializer = new BinaryFormatter();
-                    People = (BindingList<Person>)deserializer.Deserialize(TestFileStream);
+                    People = (List<Person>)deserializer.Deserialize(TestFileStream);
                     TestFileStream.Close();
                 }
             }
@@ -93,10 +94,11 @@ namespace LinqFun
             {
                 LoadPeople(FileName + ".bin", xml);
             }
-            currencyManager = (CurrencyManager)this.BindingContext[People];
+            bs.DataSource = People;
+            currencyManager = (CurrencyManager)this.BindingContext[bs];
             btnNext.Enabled = People.Count > 1;
-            txtFirstName.DataBindings.Add("Text", People, "FirstName");
-            txtLastName.DataBindings.Add("Text", People, "LastName");
+            txtFirstName.DataBindings.Add("Text", bs, "FirstName");
+            txtLastName.DataBindings.Add("Text", bs, "LastName");
             UpdateForm();
 
         }
@@ -128,6 +130,10 @@ namespace LinqFun
             frmData dataForm = new frmData();
             dataForm.SetDataSource(People);
             dataForm.ShowDialog();
+            if (currencyManager.Position >= currencyManager.Count)
+            {
+                currencyManager.Position = currencyManager.Count - 1;
+            }
             UpdateForm();
         }
     }

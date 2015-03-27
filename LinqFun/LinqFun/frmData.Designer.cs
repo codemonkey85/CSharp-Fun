@@ -62,6 +62,7 @@
             this.Controls.Add(this.dgData);
             this.Name = "frmData";
             this.Text = "frmData";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmData_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

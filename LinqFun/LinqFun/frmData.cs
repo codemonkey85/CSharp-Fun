@@ -11,15 +11,17 @@ namespace LinqFun
 {
     public partial class frmData : Form
     {
-        BindingList<Person> People;
+        List<Person> People;
+        BindingSource bs = new BindingSource();
         public frmData()
         {
             InitializeComponent();
         }
-        public void SetDataSource(BindingList<Person> People)
+        public void SetDataSource(List<Person> People)
         {
             this.People = People;
-            dgData.DataSource = this.People;
+            bs.DataSource = this.People;
+            dgData.DataSource = bs;
         }
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {
@@ -27,16 +29,20 @@ namespace LinqFun
             {
                 if (txtFilter.Text == string.Empty)
                 {
-                    dgData.DataSource = People;
+                    bs.DataSource = People;
                 }
                 else
                 {
-                    dgData.DataSource = People.Where(person =>
+                    bs.DataSource = People.Where(person =>
                             person.LastName.ToLower().Contains(txtFilter.Text.ToLower().Trim()) ||
                             person.FirstName.ToLower().Contains(txtFilter.Text.ToLower().Trim())
                             ).ToList();
                 }
             }
+        }
+        private void frmData_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            dgData.EndEdit();
         }
     }
 }
