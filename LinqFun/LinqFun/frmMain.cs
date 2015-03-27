@@ -116,35 +116,14 @@ namespace LinqFun
         private void btnNew_Click(object sender, EventArgs e)
         {
             currencyManager.AddNew();
-            try
-            {
-                currencyManager.Position = currencyManager.Count - 1;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                UpdateForm();
-                txtFirstName.Focus();
-            }
+            currencyManager.Position = currencyManager.Count - 1;
+            UpdateForm();
+            txtFirstName.Focus();
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            try
-            {
-                People.RemoveAt(currencyManager.Position);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                bs.ResetBindings(false);
-                UpdateForm();
-            }
+            currencyManager.RemoveAt(currencyManager.Position);
+            UpdateForm();
         }
         private void btnGrid_Click(object sender, EventArgs e)
         {
