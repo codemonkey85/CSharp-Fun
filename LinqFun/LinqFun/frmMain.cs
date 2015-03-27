@@ -15,9 +15,8 @@ namespace LinqFun
     public partial class frmMain : Form
     {
         bool xml = true;
-        BindingSource bs = new BindingSource();
         const string FileName = @"People";
-        public List<Person> People = new List<Person>();
+        public BindingList<Person> People = new BindingList<Person>();
         private CurrencyManager currencyManager = null;
         public frmMain()
         {
@@ -46,7 +45,7 @@ namespace LinqFun
             {
                 // XML Serialization
                 Stream TestFileStream = File.Create(filename);
-                XmlSerializer serializer = new XmlSerializer(typeof(List<Person>));
+                XmlSerializer serializer = new XmlSerializer(typeof(BindingList<Person>));
                 serializer.Serialize(TestFileStream, People);
                 TestFileStream.Close();
             }
@@ -67,8 +66,8 @@ namespace LinqFun
                 if (File.Exists(filename))
                 {
                     Stream TestFileStream = File.OpenRead(filename);
-                    XmlSerializer deserializer = new XmlSerializer(typeof(List<Person>));
-                    People = (List<Person>)deserializer.Deserialize(TestFileStream);
+                    XmlSerializer deserializer = new XmlSerializer(typeof(BindingList<Person>));
+                    People = (BindingList<Person>)deserializer.Deserialize(TestFileStream);
                     TestFileStream.Close();
                 }
             }
@@ -79,7 +78,7 @@ namespace LinqFun
                 {
                     Stream TestFileStream = File.OpenRead(filename);
                     BinaryFormatter deserializer = new BinaryFormatter();
-                    People = (List<Person>)deserializer.Deserialize(TestFileStream);
+                    People = (BindingList<Person>)deserializer.Deserialize(TestFileStream);
                     TestFileStream.Close();
                 }
             }
@@ -94,11 +93,10 @@ namespace LinqFun
             {
                 LoadPeople(FileName + ".bin", xml);
             }
-            bs.DataSource = People;
-            currencyManager = (CurrencyManager)this.BindingContext[bs];
+            currencyManager = (CurrencyManager)this.BindingContext[People];
             btnNext.Enabled = People.Count > 1;
-            txtFirstName.DataBindings.Add("Text", bs, "FirstName");
-            txtLastName.DataBindings.Add("Text", bs, "LastName");
+            txtFirstName.DataBindings.Add("Text", People, "FirstName");
+            txtLastName.DataBindings.Add("Text", People, "LastName");
             UpdateForm();
 
         }

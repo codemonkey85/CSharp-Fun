@@ -11,12 +11,12 @@ namespace LinqFun
 {
     public partial class frmData : Form
     {
-        List<Person> People;
+        BindingList<Person> People;
         public frmData()
         {
             InitializeComponent();
         }
-        public void SetDataSource(List<Person> People)
+        public void SetDataSource(BindingList<Person> People)
         {
             this.People = People;
             dgData.DataSource = this.People;
