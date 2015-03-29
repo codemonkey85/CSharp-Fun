@@ -32,6 +32,11 @@ namespace LinqFun
         {
             currencyManager.Position++;
             UpdateForm();
+
+            //MessageBox.Show(((Person)(bs.Current)).Gender.ToString());
+            //if(cbGender.SelectedValue != null)
+            //MessageBox.Show(cbGender.SelectedValue.ToString());
+
         }
         private void UpdateForm()
         {
@@ -99,6 +104,23 @@ namespace LinqFun
             btnNext.Enabled = People.Count > 1;
             txtFirstName.DataBindings.Add("Text", bs, "FirstName");
             txtLastName.DataBindings.Add("Text", bs, "LastName");
+
+            //        cbGender.DataSource = Enum.GetValues(typeof(Genders))
+            //.Cast<Genders>()
+            //.Select(p => new { Key = (int)p, Value = p.ToString() })
+            //.ToList();
+
+            //        cbGender.DisplayMember = "Value";
+            //        cbGender.ValueMember = "Key";
+
+            //        cbGender.DataBindings.Add("SelectedItem", bs, "Gender");
+
+            cbGender.DataSource = Enum.GetValues(typeof(Genders));
+            cbGender.DataBindings.Add("SelectedItem", bs, "Gender", false, DataSourceUpdateMode.OnPropertyChanged);
+
+            rbMale.DataBindings.Add("Checked", bs, "isMale");
+            rbFemale.DataBindings.Add("Checked", bs, "isFemale");
+
             UpdateForm();
 
         }
@@ -134,6 +156,18 @@ namespace LinqFun
             {
                 currencyManager.Position = currencyManager.Count - 1;
             }
+            UpdateForm();
+        }
+        private void rbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateForm();
+        }
+        private void rbMale_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateForm();
+        }
+        private void cbGender_SelectedIndexChanged(object sender, EventArgs e)
+        {
             UpdateForm();
         }
     }
