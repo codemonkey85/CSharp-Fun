@@ -26,9 +26,9 @@ namespace LinqFun
             {
                 return this.Gender == Genders.Male;
             }
-            set 
+            set
             {
-                if (value) 
+                if (value)
                 {
                     this.Gender = Genders.Male;
                 }

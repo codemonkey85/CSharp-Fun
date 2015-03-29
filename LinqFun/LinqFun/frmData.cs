@@ -22,6 +22,15 @@ namespace LinqFun
             this.People = People;
             bs.DataSource = this.People;
             dgData.DataSource = bs;
+            dgData.Columns.Remove("Gender");
+            DataGridViewComboBoxColumn clmn = new DataGridViewComboBoxColumn();
+            clmn.Name = "Gender";
+            clmn.HeaderText = clmn.Name;
+            clmn.DataSource = Enum.GetValues(typeof(Genders));
+            clmn.DataPropertyName = "Gender";
+            dgData.Columns.Add(clmn);
+            dgData.Columns["isFemale"].Visible = false;
+            dgData.Columns["isMale"].Visible = false;
         }
         private void txtFilter_TextChanged(object sender, EventArgs e)
         {

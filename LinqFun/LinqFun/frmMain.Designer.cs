@@ -33,8 +33,8 @@
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblLastName = new System.Windows.Forms.Label();
             this.txtLastName = new System.Windows.Forms.TextBox();
-            this.lblGender = new System.Windows.Forms.Label();
-            this.cbGender = new System.Windows.Forms.ComboBox();
+            this.rbMale = new System.Windows.Forms.RadioButton();
+            this.rbFemale = new System.Windows.Forms.RadioButton();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
@@ -42,8 +42,6 @@
             this.ssMain = new System.Windows.Forms.StatusStrip();
             this.ssLabelCurrent = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnGrid = new System.Windows.Forms.Button();
-            this.rbMale = new System.Windows.Forms.RadioButton();
-            this.rbFemale = new System.Windows.Forms.RadioButton();
             this.flowLayoutPanel1.SuspendLayout();
             this.ssMain.SuspendLayout();
             this.SuspendLayout();
@@ -54,8 +52,6 @@
             this.flowLayoutPanel1.Controls.Add(this.txtFirstName);
             this.flowLayoutPanel1.Controls.Add(this.lblLastName);
             this.flowLayoutPanel1.Controls.Add(this.txtLastName);
-            this.flowLayoutPanel1.Controls.Add(this.lblGender);
-            this.flowLayoutPanel1.Controls.Add(this.cbGender);
             this.flowLayoutPanel1.Controls.Add(this.rbMale);
             this.flowLayoutPanel1.Controls.Add(this.rbFemale);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(18, 18);
@@ -100,23 +96,29 @@
             this.txtLastName.Size = new System.Drawing.Size(277, 26);
             this.txtLastName.TabIndex = 3;
             // 
-            // lblGender
+            // rbMale
             // 
-            this.lblGender.AutoSize = true;
-            this.lblGender.Location = new System.Drawing.Point(3, 72);
-            this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(63, 20);
-            this.lblGender.TabIndex = 4;
-            this.lblGender.Text = "Gender";
+            this.rbMale.AutoSize = true;
+            this.rbMale.Location = new System.Drawing.Point(3, 75);
+            this.rbMale.Name = "rbMale";
+            this.rbMale.Size = new System.Drawing.Size(68, 24);
+            this.rbMale.TabIndex = 8;
+            this.rbMale.TabStop = true;
+            this.rbMale.Text = "Male";
+            this.rbMale.UseVisualStyleBackColor = true;
+            this.rbMale.CheckedChanged += new System.EventHandler(this.rbMale_CheckedChanged);
             // 
-            // cbGender
+            // rbFemale
             // 
-            this.cbGender.FormattingEnabled = true;
-            this.cbGender.Location = new System.Drawing.Point(72, 75);
-            this.cbGender.Name = "cbGender";
-            this.cbGender.Size = new System.Drawing.Size(303, 28);
-            this.cbGender.TabIndex = 5;
-            this.cbGender.SelectedIndexChanged += new System.EventHandler(this.cbGender_SelectedIndexChanged);
+            this.rbFemale.AutoSize = true;
+            this.rbFemale.Location = new System.Drawing.Point(77, 75);
+            this.rbFemale.Name = "rbFemale";
+            this.rbFemale.Size = new System.Drawing.Size(87, 24);
+            this.rbFemale.TabIndex = 10;
+            this.rbFemale.TabStop = true;
+            this.rbFemale.Text = "Female";
+            this.rbFemale.UseVisualStyleBackColor = true;
+            this.rbFemale.CheckedChanged += new System.EventHandler(this.rbFemale_CheckedChanged);
             // 
             // btnPrevious
             // 
@@ -192,30 +194,6 @@
             this.btnGrid.UseVisualStyleBackColor = true;
             this.btnGrid.Click += new System.EventHandler(this.btnGrid_Click);
             // 
-            // rbMale
-            // 
-            this.rbMale.AutoSize = true;
-            this.rbMale.Location = new System.Drawing.Point(3, 109);
-            this.rbMale.Name = "rbMale";
-            this.rbMale.Size = new System.Drawing.Size(68, 24);
-            this.rbMale.TabIndex = 8;
-            this.rbMale.TabStop = true;
-            this.rbMale.Text = "Male";
-            this.rbMale.UseVisualStyleBackColor = true;
-            this.rbMale.CheckedChanged += new System.EventHandler(this.rbMale_CheckedChanged);
-            // 
-            // rbFemale
-            // 
-            this.rbFemale.AutoSize = true;
-            this.rbFemale.Location = new System.Drawing.Point(77, 109);
-            this.rbFemale.Name = "rbFemale";
-            this.rbFemale.Size = new System.Drawing.Size(87, 24);
-            this.rbFemale.TabIndex = 10;
-            this.rbFemale.TabStop = true;
-            this.rbFemale.Text = "Female";
-            this.rbFemale.UseVisualStyleBackColor = true;
-            this.rbFemale.CheckedChanged += new System.EventHandler(this.rbFemale_CheckedChanged);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -256,8 +234,6 @@
         private System.Windows.Forms.StatusStrip ssMain;
         private System.Windows.Forms.ToolStripStatusLabel ssLabelCurrent;
         private System.Windows.Forms.Button btnGrid;
-        private System.Windows.Forms.Label lblGender;
-        private System.Windows.Forms.ComboBox cbGender;
         private System.Windows.Forms.RadioButton rbMale;
         private System.Windows.Forms.RadioButton rbFemale;
 
