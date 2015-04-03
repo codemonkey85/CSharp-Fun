@@ -102,11 +102,10 @@
             this.rbMale.Location = new System.Drawing.Point(3, 75);
             this.rbMale.Name = "rbMale";
             this.rbMale.Size = new System.Drawing.Size(68, 24);
-            this.rbMale.TabIndex = 8;
+            this.rbMale.TabIndex = 4;
             this.rbMale.TabStop = true;
             this.rbMale.Text = "Male";
             this.rbMale.UseVisualStyleBackColor = true;
-            this.rbMale.CheckedChanged += new System.EventHandler(this.rbMale_CheckedChanged);
             // 
             // rbFemale
             // 
@@ -114,11 +113,10 @@
             this.rbFemale.Location = new System.Drawing.Point(77, 75);
             this.rbFemale.Name = "rbFemale";
             this.rbFemale.Size = new System.Drawing.Size(87, 24);
-            this.rbFemale.TabIndex = 10;
+            this.rbFemale.TabIndex = 5;
             this.rbFemale.TabStop = true;
             this.rbFemale.Text = "Female";
             this.rbFemale.UseVisualStyleBackColor = true;
-            this.rbFemale.CheckedChanged += new System.EventHandler(this.rbFemale_CheckedChanged);
             // 
             // btnPrevious
             // 

@@ -30,6 +30,7 @@
         {
             this.dgData = new System.Windows.Forms.DataGridView();
             this.txtFilter = new System.Windows.Forms.TextBox();
+            this.cbGender = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,27 +40,42 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgData.Location = new System.Drawing.Point(0, 26);
+            this.dgData.Location = new System.Drawing.Point(0, 40);
+            this.dgData.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgData.Name = "dgData";
-            this.dgData.Size = new System.Drawing.Size(284, 236);
-            this.dgData.TabIndex = 1;
+            this.dgData.Size = new System.Drawing.Size(806, 745);
+            this.dgData.TabIndex = 2;
             // 
             // txtFilter
             // 
-            this.txtFilter.Dock = System.Windows.Forms.DockStyle.Top;
+            this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFilter.Location = new System.Drawing.Point(0, 0);
+            this.txtFilter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(284, 20);
+            this.txtFilter.Size = new System.Drawing.Size(424, 26);
             this.txtFilter.TabIndex = 0;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
+            // cbGender
+            // 
+            this.cbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGender.FormattingEnabled = true;
+            this.cbGender.Location = new System.Drawing.Point(429, 0);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Size = new System.Drawing.Size(377, 28);
+            this.cbGender.TabIndex = 1;
+            this.cbGender.SelectedIndexChanged += new System.EventHandler(this.cbGender_SelectedIndexChanged);
+            // 
             // frmData
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(806, 785);
+            this.Controls.Add(this.cbGender);
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.dgData);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmData";
             this.Text = "frmData";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmData_FormClosing);
@@ -73,5 +89,6 @@
 
         private System.Windows.Forms.DataGridView dgData;
         private System.Windows.Forms.TextBox txtFilter;
+        private System.Windows.Forms.ComboBox cbGender;
     }
 }

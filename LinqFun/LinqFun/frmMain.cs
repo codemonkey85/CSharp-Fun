@@ -137,17 +137,5 @@ namespace LinqFun
             }
             UpdateForm();
         }
-        private void rbFemale_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateForm();
-        }
-        private void rbMale_CheckedChanged(object sender, EventArgs e)
-        {
-            UpdateForm();
-        }
-        private void cbGender_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateForm();
-        }
     }
 }
