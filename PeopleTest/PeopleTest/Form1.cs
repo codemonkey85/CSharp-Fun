@@ -56,6 +56,10 @@ namespace PeopleTest
         private void Form1_Load(object sender, EventArgs e)
         {
             person = StructUtils.RawDeserialize<Person>(Filename);
+            if (person == null) 
+            {
+                person = new Person { FirstName = "", LastName = ""};
+            }
             People.Add(person);
             bs.DataSource = People;
             dgData.DataSource = bs;
@@ -140,17 +144,24 @@ namespace PeopleTest
 
         static public TType RawDeserialize<TType>(string fileName)
         {
-            byte[] data = null;
-            using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+            if (File.Exists(fileName))
             {
-                using (BinaryReader br = new BinaryReader(fs))
+                byte[] data = null;
+                using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
                 {
-                    data = br.ReadBytes((int)fs.Length);
-                    br.Close();
-                    fs.Close();
+                    using (BinaryReader br = new BinaryReader(fs))
+                    {
+                        data = br.ReadBytes((int)fs.Length);
+                        br.Close();
+                        fs.Close();
+                    }
                 }
+                return RawDeserialize<TType>(data, 0);
             }
-            return RawDeserialize<TType>(data, 0);
+            else 
+            {
+                return default(TType);
+            }
         }
 
         static public void RawSerialize<TType>(byte[] rawData, int position, TType value)
