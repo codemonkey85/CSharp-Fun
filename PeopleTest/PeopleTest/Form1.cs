@@ -53,19 +53,6 @@ namespace PeopleTest
             //System.Diagnostics.Debug.WriteLine(string.Format("{0}", test.Data));
         }
 
-        public static void SerializeItem(Person person, string fileName, IFormatter formatter)
-        {
-            FileStream s = new FileStream(fileName, FileMode.Create);
-            formatter.Serialize(s, person);
-            s.Close();
-        }
-
-        public static void DeserializeItem(ref Person person, string fileName, IFormatter formatter)
-        {
-            FileStream s = new FileStream(fileName, FileMode.Open);
-            person = (Person)formatter.Deserialize(s);
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             person = StructUtils.RawDeserialize<Person>(Filename);
@@ -88,7 +75,7 @@ namespace PeopleTest
 
     [StructLayout(LayoutKind.Explicit, Size = 48, Pack = 1, CharSet = CharSet.Unicode)]
     [Serializable]
-    public class Person : ISerializable
+    public class Person
     {
         [FieldOffset(0)]
         [MarshalAsAttribute(UnmanagedType.ByValTStr, SizeConst = 10)]
